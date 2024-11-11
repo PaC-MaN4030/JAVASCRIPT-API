@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>apiv project</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <!--api-->
+    <div class="products" id="products"></div>
+    <!--end api-->
+    <script>
+      async function allData() {
+        let products = "";
+        let data = await fetch("https://fakestoreapi.com/products");
+        let res = await data.json();
+        products = res.map((elem) => {
+          return `<div class="product-holder">
+          <div class="img">
+            <img src="${elem.image}" alt="just for test so do not pay attention" />
+          </div>
+          <div class="title">
+            <h2>${elem.title}</h2>
+          </div>
+          <div class="description">
+            <p>${elem.description}</p>
+          </div>
+          <div class="price">
+            <h5>${elem.price}</h5>
+          </div>
+          <div class="category">
+            <h5>${elem.category}</h5>
+          </div>
+          <div class="rating">
+            <div class="rate">
+              <h6>rate:${elem.rating.rate}</h6>
+            </div>
+            <div class="count">
+              <h6>count:${elem.rating.count}</h6>
+            </div>
+          </div>
+          <div class="btn">
+            <div class="buy">
+              <a href="#">BUY</a>
+            </div>
+          </div>
+        </div>`;
+        });
+        document
+          .querySelector("#products")
+          .insertAdjacentHTML("afterbegin", products);
+      }
+      allData();
+    </script>
+  </body>
+</html>

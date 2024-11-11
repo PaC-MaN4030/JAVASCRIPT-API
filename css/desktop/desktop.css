@@ -1,0 +1,11 @@
+div.products {
+  gap: 30px;
+    div.product-holder {
+      width: 25%;
+      min-width: 350px;
+      &:hover {
+        background-color: #838e6e;
+        box-shadow: 3px 3px 30px #6efee6;
+      }
+    }
+  }
